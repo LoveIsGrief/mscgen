@@ -1,9 +1,27 @@
 # -*- coding: utf-8 -*-
-from pathlib import Path
-
 from setuptools import setup, find_packages
 
-long_desc = Path("README.rst").read_text()
+long_desc = '''
+This package contains the mscgenjs_ Sphinx_ extension.
+
+.. _mscgenjs: https://mscgen.js.org/
+.. _Sphinx: http://sphinx.pocoo.org/
+
+Allow mscgen-formatted Message Sequence Chart (MSC) graphs to be included in
+Sphinx-generated documents inline. For example::
+
+    .. mscgenjs::
+    
+        msc {
+            hscale = "0.5";
+    
+            a,b,c;
+    
+            a->b [ label = "ab()" ] ;
+            b->c [ label = "bc(TRUE)"];
+            c=>c [ label = "process()" ];
+        }
+'''
 
 requires = ['Sphinx>=0.6']
 
