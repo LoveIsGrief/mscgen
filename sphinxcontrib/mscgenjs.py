@@ -12,7 +12,7 @@
     :license: BOLA, see LICENSE for details.
 """
 
-from os import path
+from pathlib import Path
 
 import pkg_resources
 from docutils import nodes
@@ -72,9 +72,13 @@ def copy_mscgen_js(app: Sphinx):
     """
     _format = app.builder.format
     if _format == 'html':
-        static_dir = path.join(app.builder.outdir, '_static')
-        filepath = pkg_resources.resource_filename('sphinxcontrib', JS_FILE_PATH)
-        copy_asset_file(filepath, static_dir)
+        static_dir = Path(app.builder.outdir) / "_static"
+        source_path = pkg_resources.resource_filename("sphinxcontrib", JS_FILE_PATH)
+        target_path = static_dir / JS_FILENAME
+        if not target_path.exists():
+            static_dir.mkdir(parents=True, exist_ok=True)
+            copy_asset_file(source_path, static_dir)
+
         # defer: Needs to be loaded after all nodes are loaded in order to find them
         app.add_js_file(JS_FILENAME, defer="defer")
 
