@@ -10,7 +10,7 @@ requires = ['Sphinx>=0.6']
 setup(
     name='sphinxcontrib-mscgenjs',
     version='0.1',
-    url='http://packages.python.org/sphinxcontrib-mscgenjs/',
+    url='https://github.com/LoveIsGrief/sphinxcontrib-mscgenjs',
     download_url='http://pypi.python.org/pypi/sphinxcontrib-mscgenjs',
     license='BOLA',
     author='LoveIsGrief',
@@ -18,6 +18,9 @@ setup(
     description='mscgenjs Sphinx extension',
     long_description=long_desc,
     zip_safe=False,
+    project_urls={
+        "Bugs": "https://github.com/LoveIsGrief/sphinxcontrib-mscgenjs/issues"
+    },
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Console',
