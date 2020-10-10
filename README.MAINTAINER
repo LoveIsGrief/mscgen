@@ -24,8 +24,8 @@ PyPi Release
 7. Register and package the new release ``python setup.py register sdist``.
 8. Upload the new release: ``twine upload dist/*``
 9. Generate the documentation with ``make -C doc zip``.
-10. Upload the new documentation (``doc/_build/sphinxcontrib-mscgen-doc.zip``)
+10. Upload the new documentation (``doc/_build/sphinxcontrib-mscgenjs-doc.zip``)
     to PyPi:
-    http://pypi.python.org/pypi?%3Aaction=pkg_edit&name=sphinxcontrib-mscgen
+    http://pypi.python.org/pypi?%3Aaction=pkg_edit&name=sphinxcontrib-mscgenjs
 
 .. vim: set filetype=rst :

@@ -12,13 +12,12 @@ PAPEROPT_letter = -D latex_paper_size=letter
 ALLSPHINXOPTS   = -d _build/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
 .PHONY: all zip help clean html dirhtml pickle json htmlhelp qthelp \
-	latex latex-pdf changes linkcheck doctest
+	changes linkcheck doctest
 
-all: html latex-pdf
+all: html
 
 zip: all
-	@cp _build/latex/sphinxcontrib-mscgen.pdf _build/html/
-	@cd _build/html && zip -r -9 ../sphinxcontrib-mscgen-doc.zip *
+	@cd _build/html && zip -r -9 ../sphinxcontrib-mscgenjs-doc.zip *
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -67,19 +66,9 @@ qthelp:
 	@echo
 	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
 	      ".qhcp project file in _build/qthelp, like this:"
-	@echo "# qcollectiongenerator _build/qthelp/sphinxcontrib-mscgen.qhcp"
+	@echo "# qcollectiongenerator _build/qthelp/sphinxcontrib-mscgenjs.qhcp"
 	@echo "To view the help file:"
-	@echo "# assistant -collectionFile _build/qthelp/sphinxcontrib-mscgen.qhc"
-
-latex:
-	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) _build/latex
-	@echo
-	@echo "Build finished; the LaTeX files are in _build/latex."
-	@echo "Run \`make all-pdf' or \`make all-ps' in that directory to" \
-	      "run these through (pdf)latex."
-
-latex-pdf: latex
-	$(MAKE) -C _build/latex all-pdf
+	@echo "# assistant -collectionFile _build/qthelp/sphinxcontrib-mscgenjs.qhc"
 
 changes:
 	$(SPHINXBUILD) -b changes $(ALLSPHINXOPTS) _build/changes

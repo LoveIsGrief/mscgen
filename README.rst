@@ -91,10 +91,10 @@ files and installing as described above or using::
 Enabling the extension in Sphinx_
 ---------------------------------
 
-Just add ``sphinxcontrib.mscgen`` to the list of extensions in the ``conf.py``
+Just add ``sphinxcontrib.mscgenjs`` to the list of extensions in the ``conf.py``
 file. For example::
 
-    extensions = ['sphinxcontrib.mscgen']
+    extensions = ['sphinxcontrib.mscgenjs']
 
 
 Usage

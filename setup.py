@@ -3,7 +3,7 @@
 from setuptools import setup, find_packages
 
 long_desc = '''
-This package contains the mscgen_ Sphinx_ extension.
+This package contains the mscgen.js_ Sphinx_ extension.
 
 .. _mscgen: http://www.mcternan.me.uk/mscgen/
 .. _Sphinx: http://sphinx.pocoo.org/
@@ -26,14 +26,14 @@ Sphinx-generated documents inline. For example::
 requires = ['Sphinx>=0.6']
 
 setup(
-    name='sphinxcontrib-mscgen',
-    version='0.5',
+    name='sphinxcontrib-mscgenjs',
+    version='0.1',
     url='http://packages.python.org/sphinxcontrib-mscgen/',
     download_url='http://pypi.python.org/pypi/sphinxcontrib-mscgen',
     license='BOLA',
-    author='Leandro Lucarella',
-    author_email='llucax@gmail.com',
-    description='mscgen Sphinx extension',
+    author='LoveIsGrief',
+    author_email='loveisgrief@tuta.io',
+    description='mscgenjs Sphinx extension',
     long_description=long_desc,
     zip_safe=False,
     classifiers=[
