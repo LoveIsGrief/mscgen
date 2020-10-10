@@ -38,7 +38,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'sphinxcontrib-mscgen'
-copyright = u'2009, Leandro Lucarella'
+copyright = u'2020, LoveIsGrief'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -173,7 +173,7 @@ htmlhelp_basename = 'sphinxcontrib-mscgendoc'
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'sphinxcontrib-mscgen.tex', u'sphinxcontrib-mscgen Documentation',
-   u'Leandro Lucarella', 'howto'),
+   u'LoveIsGrief', 'howto'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
