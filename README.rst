@@ -30,27 +30,49 @@ Quick Example
 
 This source::
 
-   .. msc::
+   .. mscgenjs::
 
-      hscale = "0.5";
+    # OpenId Connect protocol
+    # https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.1.3
+    msc {
+      wordwraparcs="true";
 
-      a,b,c;
+      eu [label="end-user"],
+      rp [label="relying party"],
+      op [label="OpenID provider"];
 
-      a->b [ label = "ab()" ] ;
-      b->c [ label = "bc(TRUE)"];
-      c=>c [ label = "process()" ];
+      eu =>> rp [label="log me in"];
+      rp =>> op [label="authentication request"];
+      op =>> eu [label="authentication and authorization request"];
+      eu >> op [label="authenticate and authorize"];
+      op >> rp [label="authentication response"];
+      rp =>> op [label="UserInfo request"];
+      op >> rp [label="UserInfo response"];
+      rp >> eu [label="Hi. You're logged in with {UserInfo.name}"];
+    }
 
 is rendered as:
 
-.. msc::
+.. mscgenjs::
 
-   hscale = "0.5";
+    # OpenId Connect protocol
+    # https://openid.net/specs/openid-connect-core-1_0.html#rfc.section.1.3
+    msc {
+      wordwraparcs="true";
 
-   a,b,c;
+      eu [label="end-user"],
+      rp [label="relying party"],
+      op [label="OpenID provider"];
 
-   a->b [ label = "ab()" ] ;
-   b->c [ label = "bc(TRUE)"];
-   c=>c [ label = "process()" ];
+      eu =>> rp [label="log me in"];
+      rp =>> op [label="authentication request"];
+      op =>> eu [label="authentication and authorization request"];
+      eu >> op [label="authenticate and authorize"];
+      op >> rp [label="authentication response"];
+      rp =>> op [label="UserInfo request"];
+      op >> rp [label="UserInfo response"];
+      rp >> eu [label="Hi. You're logged in with {UserInfo.name}"];
+    }
 
 
 Download
@@ -105,15 +127,15 @@ to its documentation for details on how to specify the diagram. You should
 have the program installed for this extension to work. If you need LaTeX
 output, you'll need the epstopdf_ program too.
 
-This extension adds the ``mscgen`` and ``msc`` directives. The former let
+This extension adds the ``mscgenjs`` and ``msc`` directives. The former let
 you specify a full diagram, the later let you omit the ``msc { ... }``
 bits so you can jump right to the important stuff.
 
 For an example on using the ``msc`` directive see the `Quick Example`_. If you
-need full control over the :abbr:`MSC` diagram you can use the ``mscgen``
+need full control over the :abbr:`MSC` diagram you can use the ``mscgenjs``
 directive::
 
-   .. mscgen::
+   .. mscgenjs::
 
       msc {
          hscale = "0.5";
@@ -134,13 +156,13 @@ Configuration
 A few configuration options are added (all optional, of course ;) to Sphinx_ so
 you can set them in the ``conf.py`` file:
 
-``mscgen``:
-   location of the *mscgen* program. It's expected to be in the PATH by
+``mscgenjs``:
+   location of the *mscgenjs* program. It's expected to be in the PATH by
    default. The full path, including the binary, should be given if that's
    not the case.
 
 ``mscgen_args``:
-   extra command line arguments for *mscgen* (should be a list of
+   extra command line arguments for *mscgenjs* (should be a list of
    strings).
 
 ``mscgen_epstopdf``:
@@ -157,7 +179,7 @@ Remember to enable the extension first (see Install_ for details).
 
 .. Links:
 .. _Sphinx: http://sphinx.pocoo.org/
-.. _Mscgen: http://www.mcternan.me.uk/mscgen/
+.. _Mscgen: http://www.mcternan.me.uk/mscgenjs/
 .. _`Graphviz Dot`: http://www.graphviz.org/
 .. _epstopdf: http://www.ctan.org/tex-archive/support/epstopdf/
 .. _PyPI: http://pypi.python.org/pypi
