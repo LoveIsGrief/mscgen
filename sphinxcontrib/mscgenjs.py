@@ -1,15 +1,10 @@
 # -*- coding: utf-8 -*-
 """
     sphinxcontrib.mscgenjs
-    ~~~~~~~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~
 
     Allow mscgen-formatted :abbr:`MSC (Message Sequence Chart)` graphs to be
     included in Sphinx-generated documents inline.
-
-    See the README file for details.
-
-    :author: LoveIsGrief<loveisgrief@tuta.io>
-    :license: BOLA, see LICENSE for details.
 """
 
 from pathlib import Path
@@ -24,6 +19,11 @@ from sphinx.writers.html import HTMLTranslator
 
 JS_FILENAME = 'mscgen-inpage.js'
 JS_FILE_PATH = '_static/%s' % JS_FILENAME
+LANGUAGES = (
+    'json',
+    'msgenny',
+    'xu',
+)
 
 
 class MscgenJsError(SphinxError):
@@ -35,20 +35,16 @@ class MscgenJsNode(nodes.General, nodes.Element):
 
 
 def is_language(argument):
-    return directives.choice(argument, (
-        'json',
-        'msgenny',
-        'xu',
-    ))
+    return directives.choice(argument, LANGUAGES)
 
 
 class MscgenJs(Directive):
     """
     Directive to insert arbitrary mscgen markup for HTML documents.
 
-    It will be embedded using mscgen.js
+    It will be embedded using mscgen.js_
 
-    https://mscgen.js.org/embed.html#package
+    .. _mscgen.js: https://mscgen.js.org/embed.html#package
     """
     has_content = True
     required_arguments = 0
@@ -84,7 +80,8 @@ def html_visit_mscgen(self: HTMLTranslator, node: MscgenJsNode):
 def copy_mscgen_js(app: Sphinx):
     """
     Copies the JS files that does the live rendering of MSC code
-    https://www.sphinx-doc.org/en/master/development/theming.html#add-your-own-static-files-to-the-build-assets
+
+    Taken from `Theming guide <https://www.sphinx-doc.org/en/master/development/theming.html#add-your-own-static-files-to-the-build-assets>`_
     """
     _format = app.builder.format
     if _format == 'html':
