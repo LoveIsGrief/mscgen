@@ -70,7 +70,6 @@ def html_visit_mscgen(self: HTMLTranslator, node: MscgenJsNode):
     """
     Creates an html node with the user's MSC code that can be rendered by mscgen.js
     """
-    # TODO Add options for data-language=json|msgenny|xu
     options = {
         "class": "mscgen_js"
     }

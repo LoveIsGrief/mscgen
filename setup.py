@@ -1,35 +1,17 @@
 # -*- coding: utf-8 -*-
+from pathlib import Path
 
 from setuptools import setup, find_packages
 
-long_desc = '''
-This package contains the mscgen.js_ Sphinx_ extension.
-
-.. _mscgen: http://www.mcternan.me.uk/mscgen/
-.. _Sphinx: http://sphinx.pocoo.org/
-
-Allow mscgen-formatted Message Sequence Chart (MSC) graphs to be included in
-Sphinx-generated documents inline. For example::
-
-    .. msc::
-
-        hscale = "0.5";
-
-        a,b,c;
-
-        a->b [ label = "ab()" ] ;
-        b->c [ label = "bc(TRUE)"];
-        c=>c [ label = "process()" ];
-
-'''
+long_desc = Path("README.rst").read_text()
 
 requires = ['Sphinx>=0.6']
 
 setup(
     name='sphinxcontrib-mscgenjs',
     version='0.1',
-    url='http://packages.python.org/sphinxcontrib-mscgen/',
-    download_url='http://pypi.python.org/pypi/sphinxcontrib-mscgen',
+    url='http://packages.python.org/sphinxcontrib-mscgenjs/',
+    download_url='http://pypi.python.org/pypi/sphinxcontrib-mscgenjs',
     license='BOLA',
     author='LoveIsGrief',
     author_email='loveisgrief@tuta.io',
@@ -37,7 +19,7 @@ setup(
     long_description=long_desc,
     zip_safe=False,
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 3 - Alpha',
         'Environment :: Console',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',

@@ -117,11 +117,6 @@ file. For example::
 Usage
 =====
 
-The Mscgen_ program is used to render the :abbr:`MSC`, so you should refer
-to its documentation for details on how to specify the diagram. You should
-have the program installed for this extension to work. If you need LaTeX
-output, you'll need the epstopdf_ program too.
-
 This extension adds the ``mscgenjs`` directive.
 Using the ``:language:`` option with ``json``, ``msgenny`` or ``xu``
 different formats can be chosen.
