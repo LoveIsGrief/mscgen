@@ -4,7 +4,7 @@
 MSC extension for Sphinx
 ========================
 
-:author: Leandro Lucarella <llucax@gmail.com>
+:author: LoveIsGrief <loveisgrief@tuta.io>
 
 
 About
