@@ -16,10 +16,11 @@ from pathlib import Path
 
 import pkg_resources
 from docutils import nodes
-from docutils.parsers.rst import Directive
+from docutils.parsers.rst import Directive, directives
 from sphinx.application import Sphinx
 from sphinx.errors import SphinxError
 from sphinx.util.fileutil import copy_asset_file
+from sphinx.writers.html import HTMLTranslator
 
 JS_FILENAME = 'mscgen-inpage.js'
 JS_FILE_PATH = '_static/%s' % JS_FILENAME
@@ -33,6 +34,14 @@ class MscgenJsNode(nodes.General, nodes.Element):
     pass
 
 
+def is_language(argument):
+    return directives.choice(argument, (
+        'json',
+        'msgenny',
+        'xu',
+    ))
+
+
 class MscgenJs(Directive):
     """
     Directive to insert arbitrary mscgen markup for HTML documents.
@@ -43,23 +52,31 @@ class MscgenJs(Directive):
     """
     has_content = True
     required_arguments = 0
-    # TODO: Add optional args
-    optional_arguments = 0
+    option_spec = {
+        "language": is_language
+    }
+    optional_arguments = len(option_spec)
     final_argument_whitespace = False
-    option_spec = {}
 
     def run(self):
         node = MscgenJsNode()
         node['code'] = '\n'.join(self.content)
+        if "language" in self.options:
+            node["language"] = self.options["language"]
         return [node]
 
 
-def html_visit_mscgen(self, node: MscgenJsNode):
+def html_visit_mscgen(self: HTMLTranslator, node: MscgenJsNode):
     """
     Creates an html node with the user's MSC code that can be rendered by mscgen.js
     """
     # TODO Add options for data-language=json|msgenny|xu
-    self.body.append(self.starttag(node, 'pre', CLASS='mscgen_js'))
+    options = {
+        "class": "mscgen_js"
+    }
+    if "language" in node:
+        options["data-language"] = node["language"]
+    self.body.append(self.starttag(node, 'pre', **options))
     self.body.append(node['code'])
     self.body.append('</pre>\n')
     raise nodes.SkipNode
