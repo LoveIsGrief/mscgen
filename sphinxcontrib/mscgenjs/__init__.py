@@ -71,9 +71,9 @@ def html_visit_mscgen(self: HTMLTranslator, node: MscgenJsNode):
     }
     if "language" in node:
         options["data-language"] = node["language"]
-    self.body.append(self.starttag(node, 'pre', **options))
+    self.body.append(self.starttag(node, 'div', **options))
     self.body.append(node['code'])
-    self.body.append('</pre>\n')
+    self.body.append('</div>\n')
     raise nodes.SkipNode
 
 
