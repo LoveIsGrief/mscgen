@@ -86,7 +86,7 @@ def copy_mscgen_js(app: Sphinx):
     _format = app.builder.format
     if _format == 'html':
         static_dir = Path(app.builder.outdir) / "_static"
-        source_path = pkg_resources.resource_filename("sphinxcontrib", JS_FILE_PATH)
+        source_path = pkg_resources.resource_filename("sphinxcontrib.mscgenjs", JS_FILE_PATH)
         target_path = static_dir / JS_FILENAME
         if not target_path.exists():
             static_dir.mkdir(parents=True, exist_ok=True)
