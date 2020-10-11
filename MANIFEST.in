@@ -1,4 +1,4 @@
 include README
 include LICENSE
 include CHANGES
-include sphinxcontrib/_static/mscgen-inpage.js
+include sphinxcontrib/mscgenjs/_static/mscgen-inpage.js
