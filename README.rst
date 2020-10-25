@@ -6,6 +6,10 @@ MSC extension for Sphinx
 
 :author: LoveIsGrief <loveisgrief@tuta.io>
 
+.. image:: https://readthedocs.org/projects/sphinxcontrib-mscgenjs/badge/?version=latest
+    :target: https://sphinxcontrib-mscgenjs.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
+
 
 About
 =====
